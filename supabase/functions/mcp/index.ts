@@ -146,7 +146,7 @@ var get_profile_default = defineTool4({
 });
 
 // src/lib/mcp/index.ts
-var projectRef = "betageewqapxeoyztyvj";
+var projectRef = "hvenbntpxjrzwiiggdxz";
 var mcp_default = defineMcp({
   name: "amoliga-elite-mcp",
   title: "Amoliga Elite Logistics",
