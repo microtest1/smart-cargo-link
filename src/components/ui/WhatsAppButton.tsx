@@ -2,6 +2,7 @@ import * as React from "react";
 import { useState } from "react";
 import { X, Phone, Headphones, Package, Landmark, Truck, Monitor, Warehouse, MessageCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { SERVICE_WHATSAPP } from "@/content/contactChannels";
 
 function WhatsAppIcon() {
   return (
@@ -27,11 +28,11 @@ interface WhatsAppButtonProps {
 }
 
 export function WhatsAppButton({
-  phoneNumber = "233208878817",
-  message = "Hello Amoliga Elite! I need help with my shipment."
+  phoneNumber = SERVICE_WHATSAPP.customerService.phone,
+  message = SERVICE_WHATSAPP.customerService.message
 }: WhatsAppButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
   return (
     <>
