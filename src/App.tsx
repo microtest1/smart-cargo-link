@@ -5,6 +5,8 @@ import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "@/hooks/useAuth";
+import { LanguageProvider } from "@/i18n/LanguageProvider";
+import GoodsPhotos from "./pages/GoodsPhotos";
 import { CompanyAuthProvider } from "@/hooks/useCompanyAuth";
 import { ProtectedRoute } from "@/components/auth/ProtectedRoute";
 import { CompanyAdminRoute } from "@/components/auth/CompanyAdminRoute";
@@ -74,6 +76,7 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
+    <LanguageProvider>
     <AuthProvider>
       <CompanyAuthProvider>
         <TooltipProvider>
@@ -116,6 +119,7 @@ const App = () => (
               <Route path="/cbm-calculator" element={<ProtectedRoute><CbmCalculator /></ProtectedRoute>} />
               <Route path="/support" element={<ProtectedRoute><HelpSupport /></ProtectedRoute>} />
               <Route path="/settings" element={<ProtectedRoute><AppSettings /></ProtectedRoute>} />
+              <Route path="/goods-photos/:recordId" element={<ProtectedRoute><GoodsPhotos /></ProtectedRoute>} />
               <Route path="/buy-yuan" element={<ProtectedRoute><BuyYuan /></ProtectedRoute>} />
               {/* Company Admin Routes */}
               <Route path="/company-admin" element={<CompanyAdminRoute><CompanyAdminDashboard /></CompanyAdminRoute>} />
@@ -155,6 +159,7 @@ const App = () => (
         </TooltipProvider>
       </CompanyAuthProvider>
     </AuthProvider>
+    </LanguageProvider>
   </QueryClientProvider>
 );
 

@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Eye, EyeOff, Mail, Lock, User, Phone, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/i18n/LanguageProvider";
 
 interface SignupFormProps {
   onSubmit: (data: SignupData) => void;
@@ -25,6 +26,7 @@ export function SignupForm({ onSubmit, isLoading }: SignupFormProps) {
     password: "",
   });
   const [showPassword, setShowPassword] = useState(false);
+  const { t } = useLanguage();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -39,7 +41,7 @@ export function SignupForm({ onSubmit, isLoading }: SignupFormProps) {
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="space-y-2">
         <Label htmlFor="fullName" className="text-sm font-medium">
-          Full Name
+          {t("auth.fullName")}
         </Label>
         <div className="relative">
           <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
@@ -57,7 +59,7 @@ export function SignupForm({ onSubmit, isLoading }: SignupFormProps) {
 
       <div className="space-y-2">
         <Label htmlFor="email" className="text-sm font-medium">
-          Email Address
+          {t("auth.email")}
         </Label>
         <div className="relative">
           <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
@@ -75,7 +77,7 @@ export function SignupForm({ onSubmit, isLoading }: SignupFormProps) {
 
       <div className="space-y-2">
         <Label htmlFor="phone" className="text-sm font-medium">
-          Phone Number
+          {t("auth.phone")}
         </Label>
         <div className="relative">
           <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
@@ -93,7 +95,7 @@ export function SignupForm({ onSubmit, isLoading }: SignupFormProps) {
 
       <div className="space-y-2">
         <Label htmlFor="password" className="text-sm font-medium">
-          Password
+          {t("auth.password")}
         </Label>
         <div className="relative">
           <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
@@ -134,20 +136,20 @@ export function SignupForm({ onSubmit, isLoading }: SignupFormProps) {
         {isLoading ? (
           <span className="flex items-center gap-2">
             <span className="w-5 h-5 border-2 border-accent-foreground/30 border-t-accent-foreground rounded-full animate-spin" />
-            Creating account...
+            {t("auth.creating")}
           </span>
         ) : (
           <span className="flex items-center gap-2">
-            Create Account
+            {t("auth.createAccount")}
             <ArrowRight className="w-5 h-5" />
           </span>
         )}
       </Button>
 
       <p className="text-center text-sm text-muted-foreground">
-        Already have an account?{" "}
+        {t("auth.haveAccount")}{" "}
         <Link to="/login" className="text-accent font-semibold hover:underline">
-          Sign in
+          {t("nav.signIn")}
         </Link>
       </p>
     </form>

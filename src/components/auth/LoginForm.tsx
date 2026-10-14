@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Eye, EyeOff, Mail, Lock, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/i18n/LanguageProvider";
 
 interface LoginFormProps {
   onSubmit: (email: string, password: string) => void;
@@ -11,6 +12,7 @@ interface LoginFormProps {
 }
 
 export function LoginForm({ onSubmit, isLoading }: LoginFormProps) {
+  const { t } = useLanguage();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -24,7 +26,7 @@ export function LoginForm({ onSubmit, isLoading }: LoginFormProps) {
     <form onSubmit={handleSubmit} className="space-y-5">
       <div className="space-y-2">
         <Label htmlFor="email" className="text-sm font-medium">
-          Email Address
+          {t("auth.email")}
         </Label>
         <div className="relative">
           <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
@@ -43,13 +45,13 @@ export function LoginForm({ onSubmit, isLoading }: LoginFormProps) {
       <div className="space-y-2">
         <div className="flex items-center justify-between">
           <Label htmlFor="password" className="text-sm font-medium">
-            Password
+            {t("auth.password")}
           </Label>
           <Link
             to="/forgot-password"
             className="text-xs text-accent hover:underline"
           >
-            Forgot password?
+            {t("auth.forgot")}
           </Link>
         </div>
         <div className="relative">
@@ -87,20 +89,20 @@ export function LoginForm({ onSubmit, isLoading }: LoginFormProps) {
         {isLoading ? (
           <span className="flex items-center gap-2">
             <span className="w-5 h-5 border-2 border-accent-foreground/30 border-t-accent-foreground rounded-full animate-spin" />
-            Signing in...
+            {t("auth.signingIn")}
           </span>
         ) : (
           <span className="flex items-center gap-2">
-            Sign In
+            {t("nav.signIn")}
             <ArrowRight className="w-5 h-5" />
           </span>
         )}
       </Button>
 
       <p className="text-center text-sm text-muted-foreground">
-        Don't have an account?{" "}
+        {t("auth.noAccount")}{" "}
         <Link to="/signup" className="text-accent font-semibold hover:underline">
-          Create one
+          {t("auth.createAccount")}
         </Link>
       </p>
     </form>
