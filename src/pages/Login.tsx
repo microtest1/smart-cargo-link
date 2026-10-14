@@ -6,6 +6,8 @@ import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/hooks/useAuth";
+import { useLanguage } from "@/i18n/LanguageProvider";
+import { LanguageSelector } from "@/components/i18n/LanguageSelector";
 
 function safeNext(next: string | null): string | null {
   if (!next) return null;
@@ -19,6 +21,7 @@ export default function Login() {
   const [params] = useSearchParams();
   const next = safeNext(params.get("next"));
   const { toast } = useToast();
+  const { t } = useLanguage();
   const { signIn, user, isManager, isLoading: authLoading } = useAuth();
 
   useEffect(() => {
@@ -62,9 +65,10 @@ export default function Login() {
         <Link to="/">
           <Button variant="ghost" size="sm">
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Back
+            {t("auth.back")}
           </Button>
         </Link>
+        <LanguageSelector />
       </header>
 
       {/* Content */}
@@ -75,8 +79,8 @@ export default function Login() {
             <div className="w-16 h-16 rounded-2xl gradient-accent flex items-center justify-center mx-auto mb-4 shadow-glow">
               <Package className="w-8 h-8 text-accent-foreground" />
             </div>
-            <h1 className="font-display font-bold text-2xl mb-2">Welcome Back</h1>
-            <p className="text-muted-foreground">Sign in to track your shipments</p>
+            <h1 className="font-display font-bold text-2xl mb-2">{t("auth.welcomeBack")}</h1>
+            <p className="text-muted-foreground">{t("auth.signInSubtitle")}</p>
           </div>
 
           {/* Form */}
@@ -84,7 +88,7 @@ export default function Login() {
             <LoginForm onSubmit={handleLogin} isLoading={isLoading} />
             <div className="mt-4 flex items-center gap-3">
               <div className="flex-1 h-px bg-border" />
-              <span className="text-xs text-muted-foreground">or</span>
+              <span className="text-xs text-muted-foreground">{t("auth.or")}</span>
               <div className="flex-1 h-px bg-border" />
             </div>
             <div className="mt-4">
@@ -94,17 +98,17 @@ export default function Login() {
 
           {/* Company Admin Login */}
           <div className="mt-6 text-center">
-            <p className="text-sm text-muted-foreground mb-3">Are you a company administrator?</p>
+            <p className="text-sm text-muted-foreground mb-3">{t("auth.companyAdminQ")}</p>
             <Link to="/company-login">
               <Button variant="outline" className="w-full">
-                Company Admin Login
+                {t("auth.companyAdminLogin")}
               </Button>
             </Link>
           </div>
 
           <p className="mt-4 text-center text-xs text-muted-foreground">
-            By signing in, you agree to our{" "}
-            <Link to="/privacy-policy" className="text-accent hover:underline">Privacy Policy</Link>.
+            {t("auth.agreeSignIn")}{" "}
+            <Link to="/privacy-policy" className="text-accent hover:underline">{t("footer.privacy")}</Link>.
           </p>
         </div>
       </div>
