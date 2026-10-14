@@ -1,73 +1,294 @@
-# Welcome to your Lovable project
+# Remix of Amoliga Elight Flight and Logistics
 
-## Project info
+uild a production-grade, ultra-modern, multi-company logistics and cargo tracking mobile-first web application called “Smart Cargo Connect”. The platform must support Ghana–China shipping, customer package tracking, payments, notifications, and company management. It must be optimized for Android WebView and Google Play Store deployment.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+🔐 1. User Accounts & Security
 
-## How can I edit this code?
+Create:
 
-There are several ways of editing your application.
+Customer sign-up
 
-**Use Lovable**
+Customer login
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+Company manager login
 
-Changes made via Lovable will be committed automatically to this repo.
+Super admin login
 
-**Use your preferred IDE**
+Each account must include:
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Full name
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Phone number
 
-Follow these steps:
+Email
+
+Password (securely hashed)
+
+Role-based access
+
+🆔 2. Permanent Unique User Code
+
+When a customer signs up:
+
+Automatically generate a permanent unique code
+
+Format: GHA-XXXXXX
+
+Example: GHA-582941
+
+This code:
+
+Never changes
+
+Appears on dashboard
+
+Is used for package claiming, shipment tracking, and warehouse labeling
+
+🔔 3. Notifications
+
+Users must receive:
+
+In-app notifications
+
+Push notifications
+
+Triggered when:
+
+A package is added
+
+Status changes
+
+Shipment arrives
+
+Payment is needed
+
+Company posts updates
+
+Support replies
+
+Admins & managers can broadcast announcements.
+
+🏢 4. Multi-Company System
+
+Admin can:
+
+Add companies
+
+Upload logos
+
+Add warehouse addresses
+
+Add manager contacts
+
+Each company includes:
+
+Name
+
+Logo
+
+China warehouse address
+
+Ghana warehouse address
+
+Manager name
+
+Phone
+
+Email
+
+WhatsApp
+
+Customer service email
+
+🧠 5. AI Smart Search
+
+Users can search by:
+
+Tracking number
+
+Unique user code
+
+Company name
+
+Product description
+
+AI returns:
+
+Shipment status
+
+Location
+
+Company contact
+
+Estimated delivery
+
+🏭 6. Warehouse System
+
+Each company must have:
+
+China warehouse
+
+Ghana warehouse
+
+Pickup & delivery instructions
+
+📦 7. Shipment Management
+
+Admins & managers can:
+
+Create shipments
+
+Assign to user codes
+
+Enter:
+
+Tracking number
+
+Product
+
+Weight
+
+Status
+
+Company
+
+China & Ghana locations
+
+Customers see real-time tracking.
+
+💳 8. Payment System
+
+Integrate:
+
+MTN MoMo
+
+Vodafone Cash
+
+AirtelTigo
+
+Debit / Credit Cards
+
+Users can pay per shipment and view payment history.
+
+🧑‍💻 9. Customer Support
+
+Inside app:
+
+Live chat
+
+Ticket system
+
+WhatsApp button
+
+Email support
+
+📊 10. Admin Dashboard
+
+Admin can:
+
+Manage companies
+
+Upload logos
+
+Add warehouses
+
+Add shipments
+
+Assign packages
+
+Send notifications
+
+View users
+
+View payments
+
+Manage support tickets
+
+📱 11. Customer Dashboard
+
+Each user sees:
+
+Their unique code
+
+All shipments
+
+Status updates
+
+Notifications
+
+Payments
+
+Company contacts
+
+Warehouse addresses
+
+Support
+
+🎨 12. UI & Design
+
+Ultra-modern
+
+Mobile-first
+
+Clean logistics style
+
+Dark & light mode
+
+Very easy to use
+
+🔐 13. Security
+
+Encrypted passwords
+
+Secure login
+
+Role-based access
+
+Protected admin routes
+
+🚀 14. Deployment
+
+Deploy live
+
+Enable PWA
+
+Make Android-wrapper ready
+
+Optimized for Google Play Store
+
+🏢 PRE-LOADED COMPANY (AUTOMATICALLY INSERT INTO SYSTEM)
+
+Create a logistics company with:
+
+Company Name: Amoliga Elite Freight & Logistics
+Manager: Elizabeth Amoliga
+Services: Business and Personal Shipping from China to Ghana & West Africa (45 days delivery)
+Phones: +233 30 700 1743, +233 20 887 8817
+Email: aeflogistics@gmail.com
+
+WhatsApp: +233 20 887 8817
+Use the uploaded logo as the official company logo
+Enable shipment tracking, WhatsApp chat, email, and customer support for this company
+
+This project was built with [Lovable](https://lovable.dev).
+
+**Live app**: https://smart-cargo-link.lovable.app
+
+## Build with Lovable
+
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/71f84c8e-53a5-4b69-866e-9f0f97495b24).
+
+- **Ship faster**: describe what you want to build and Lovable handles the code.
+- **Stay in sync**: every change made in Lovable is committed straight to this repository.
+- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+
+## Development
+
+Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
+git clone <this-repository-url>
+cd <repository-name>
 npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
 npm run dev
 ```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
